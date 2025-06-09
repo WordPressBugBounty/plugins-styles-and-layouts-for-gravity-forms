@@ -3,7 +3,7 @@
  * Plugin Name: Gravity Booster ( Style & Layouts )
  * Plugin URI:  http://wpmonks.com/styles-layouts-gravity-forms
  * Description: Create beautiful styles for your gravity forms
- * Version:     5.20
+ * Version:     5.21
  * Author:      Sushil Kumar
  * Author URI:  http://wpmonks.com/
  * License:     GPL2License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'GF_STLA_DIR', WP_PLUGIN_DIR . '/' . basename( __DIR__ ) );
 define( 'GF_STLA_URL', plugins_url() . '/' . basename( __DIR__ ) );
 define( 'GF_STLA_STORE_URL', 'https://wpmonks.com' );
-define( 'GF_STLA_VERSION', '5.20' );
+define( 'GF_STLA_VERSION', '5.21' );
 
 if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) ) {
 	include_once GF_STLA_DIR . '/admin-menu/EDD_SL_Plugin_Updater.php';
@@ -29,6 +29,20 @@ require_once GF_STLA_DIR . '/admin-menu/class-stla-license-page.php';
 require_once GF_STLA_DIR . '/admin-menu/class-stla-addons-page.php';
 require_once GF_STLA_DIR . '/admin-menu/class-gf-stla-welcome-page.php';
 require_once GF_STLA_DIR . '/includes/admin/fetch/stla-admin-fetch-content-area.php';
+require_once GF_STLA_DIR . '/includes/admin/fetch/stla-admin-fetch-anispam.php';
+
+// Antispam keyword files.
+require_once GF_STLA_DIR . '/includes/antispam/keywords/stla-antispam-keyword-mark-spam.php';
+require_once GF_STLA_DIR . '/includes/antispam/keywords/stla-antispam-keyword-precheck.php';
+
+// Antispam Email Files.
+require_once GF_STLA_DIR . '/includes/antispam/emails/class-stla-antispam-email-mark-spam.php';
+require_once GF_STLA_DIR . '/includes/antispam/emails/class-stla-antispam-email-restrict-submission.php';
+
+// Antispam helpers.
+require_once GF_STLA_DIR . '/includes/antispam/helpers/stla-antispam-common-helpers.php';
+
+
 
 class Gravity_customizer_admin {
 
