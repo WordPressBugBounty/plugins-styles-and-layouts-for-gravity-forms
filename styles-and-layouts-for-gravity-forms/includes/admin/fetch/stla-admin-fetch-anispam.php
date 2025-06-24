@@ -7,6 +7,9 @@
  */
 class Stla_Admin_Fetch_Anispam {
 
+
+
+
 	/**
 	 * Stores the singleton instance of the Stla_Admin_Fetch_Anispam class.
 	 *
@@ -40,10 +43,59 @@ class Stla_Admin_Fetch_Anispam {
 	 */
 	public function __construct() {
 		add_action( 'wp_ajax_stla_anit_spam_settings', array( $this, 'stla_anit_spam_settings' ) );
-		add_action( 'wp_ajax_stla_save_aniSpam_settings', array( $this, 'stla_save_aniSpam_settings' ) );
+		add_action( 'wp_ajax_stla_save_antispam_settings', array( $this, 'stla_save_antispam_settings' ) );
+		add_action( 'wp_ajax_stla_antispam_user_roles_data', array( $this, 'stla_antispam_user_roles_data' ) );
 	}
 
-	public function stla_save_aniSpam_settings() {
+	public function stla_antispam_user_roles_data() {
+		global $wp_roles;
+
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
+		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'stla_gravity_booster_nonce' ) ) {
+			wp_send_json_error( 'Invalid nonce' );
+		}
+
+		$form_id = isset( $_POST['formId'] ) ? sanitize_text_field( wp_unslash( $_POST['formId'] ) ) : '';
+		if ( empty( $form_id ) ) {
+			wp_send_json_error( 'Invalid form ID' );
+		}
+
+		if ( ! isset( $wp_roles ) ) {
+			$wp_roles = wp_roles();
+		}
+
+		$all_roles    = isset( $wp_roles->roles ) ? $wp_roles->roles : array();
+		$roles_for_js = array();
+
+		foreach ( $all_roles as $role_key => $role_data ) {
+
+			// Skip the 'administrator' role from optoins.
+			if ( 'administrator' === $role_key ) {
+				continue;
+			}
+
+			$roles_for_js[] = array(
+				'value' => $role_key,
+				'label' => translate_user_role( $role_data['name'] ),
+			);
+		}
+
+		wp_send_json_success( $roles_for_js );
+	}
+
+	/**
+	 * Saves anti-spam settings for a specific Gravity Form.
+	 *
+	 * Validates the request using a nonce, checks for valid form ID and anti-spam settings,
+	 * and updates the settings in the WordPress options table. Returns the saved settings
+	 * or an error if the save operation fails.
+	 *
+	 * @since 5.21
+	 * @access public
+	 *
+	 * @return void Sends a JSON response with the saved anti-spam settings or an error.
+	 */
+	public function stla_save_antispam_settings() {
 		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
 		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'stla_gravity_booster_nonce' ) ) {
 			wp_send_json_error( 'Invalid nonce' );
