@@ -3,7 +3,7 @@
  * Plugin Name: Gravity Booster ( Style & Layouts )
  * Plugin URI:  http://wpmonks.com/styles-layouts-gravity-forms
  * Description: Create beautiful styles for your gravity forms
- * Version:     5.22
+ * Version:     5.23
  * Author:      Sushil Kumar
  * Author URI:  http://wpmonks.com/
  * License:     GPL2License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'GF_STLA_DIR', WP_PLUGIN_DIR . '/' . basename( __DIR__ ) );
 define( 'GF_STLA_URL', plugins_url() . '/' . basename( __DIR__ ) );
 define( 'GF_STLA_STORE_URL', 'https://wpmonks.com' );
-define( 'GF_STLA_VERSION', '5.22' );
+define( 'GF_STLA_VERSION', '5.23' );
 
 if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) ) {
 	include_once GF_STLA_DIR . '/admin-menu/EDD_SL_Plugin_Updater.php';
@@ -44,7 +44,6 @@ require_once GF_STLA_DIR . '/includes/antispam/userRestrictions/stla-antispam-us
 
 // Antispam helpers.
 require_once GF_STLA_DIR . '/includes/antispam/helpers/stla-antispam-common-helpers.php';
-
 
 
 class Gravity_customizer_admin {
@@ -1103,8 +1102,8 @@ class Gravity_customizer_admin {
 	public function admin_notices() {
 		if ( ! class_exists( 'GFForms' ) ) {
 			$class   = 'notice notice-error';
-			$message = ' <a href = "http:// www.gravityforms.com/" > Gravity Forms < / a > not installed . < strong > Styles & Layouts for Gravity Forms < / strong > can\'t work without Gravity Forms ';
-			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
+			$message = '<a href="http:// www.gravityforms.com/"> Gravity Forms</a> is not installed. <strong> Styles & Layouts for Gravity Forms </strong> can\'t work without Gravity Forms ';
+			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message );
 		}
 	}
 

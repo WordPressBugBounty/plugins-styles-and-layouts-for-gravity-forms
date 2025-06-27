@@ -65,9 +65,7 @@ class Stla_Antispam_Kyeword_Precheck {
 			return $validation_result;
 		}
 
-		$form = $validation_result['form'];
-
-		$form_id = rgar( $form, 'id' );
+		$form_id = rgar( $validation_result['form'], 'id' );
 
 		// Get settings.
 		$saved_antispam_settings = get_option( 'gf_stla_antispam_settings_' . $form_id, array() );
@@ -92,8 +90,7 @@ class Stla_Antispam_Kyeword_Precheck {
 		}
 
 		// Prepare form for validation.
-		$updated_form  = $form;
-		$form_is_valid = true;
+		$form = $validation_result['form'];
 
 		// keyword validation message.
 		$validation_message = ! empty( $saved_antispam_settings['restriction']['blockedKeywordsMessage'] ) ? $saved_antispam_settings['restriction']['blockedKeywordsMessage'] : 'This field contains a blocked keyword.';
@@ -111,17 +108,15 @@ class Stla_Antispam_Kyeword_Precheck {
 			}
 
 				// Match against keywords.
-			if ( Stla_Antispam_Common_Helpers::match_keywords_with_value( $raw_keywords, $value ) ) {
-				$form_is_valid = false;
+			if ( Stla_Antispam_Common_Helpers::match_keywords_with_value( $raw_keywords, $value ) && ! $field->failed_validation ) {
+				$validation_result['is_valid'] = false;
 
 				// Mark this field as failed.
-				$updated_form['fields'][ $index ]->failed_validation  = true;
-				$updated_form['fields'][ $index ]->validation_message = esc_html( $validation_message );
+				$validation_result['form']['fields'][ $index ]->failed_validation  = true;
+				$validation_result['form']['fields'][ $index ]->validation_message = esc_html( $validation_message );
 			}
 		}
 
-		$validation_result['form']     = $updated_form;
-		$validation_result['is_valid'] = $form_is_valid;
 		return $validation_result;
 	}
 }

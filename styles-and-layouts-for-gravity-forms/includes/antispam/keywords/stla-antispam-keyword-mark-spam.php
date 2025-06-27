@@ -114,6 +114,7 @@ class Stla_Antispam_Keyword_Mark_spam {
 						GFCommon::set_spam_filter( $form_id, 'Gravity Booster Anti-spam', $spam_filter_message );
 				}
 
+				// mark as spam.
 				return true;
 			}
 		}
