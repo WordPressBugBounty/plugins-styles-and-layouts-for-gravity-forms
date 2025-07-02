@@ -3,7 +3,7 @@
  * Plugin Name: Gravity Booster ( Style & Layouts )
  * Plugin URI:  http://wpmonks.com/styles-layouts-gravity-forms
  * Description: Create beautiful styles for your gravity forms
- * Version:     5.24
+ * Version:     5.25
  * Author:      Sushil Kumar
  * Author URI:  http://wpmonks.com/
  * License:     GPL2License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -17,13 +17,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'GF_STLA_DIR', WP_PLUGIN_DIR . '/' . basename( __DIR__ ) );
 define( 'GF_STLA_URL', plugins_url() . '/' . basename( __DIR__ ) );
 define( 'GF_STLA_STORE_URL', 'https://wpmonks.com' );
-define( 'GF_STLA_VERSION', '5.24' );
+define( 'GF_STLA_VERSION', '5.25' );
 
 if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) ) {
 	include_once GF_STLA_DIR . '/admin-menu/EDD_SL_Plugin_Updater.php';
 }
+
 require_once 'helpers/utils/responsive.php';
 require_once 'helpers/utils/class-gf-stla-review.php';
+
+// Antispam helpers.
+require_once GF_STLA_DIR . '/includes/antispam/helpers/stla-antispam-common-helpers.php';
 
 require_once GF_STLA_DIR . '/admin-menu/class-stla-license-page.php';
 require_once GF_STLA_DIR . '/admin-menu/class-stla-addons-page.php';
@@ -42,8 +46,7 @@ require_once GF_STLA_DIR . '/includes/antispam/emails/class-stla-antispam-email-
 // Antispam restrict users.
 require_once GF_STLA_DIR . '/includes/antispam/userRestrictions/stla-antispam-user-restrictions.php';
 
-// Antispam helpers.
-require_once GF_STLA_DIR . '/includes/antispam/helpers/stla-antispam-common-helpers.php';
+
 
 
 class Gravity_customizer_admin {
@@ -617,7 +620,8 @@ class Gravity_customizer_admin {
 			)
 		);
 		include 'includes/form-select.php';
-		if ( ! array_key_exists( 'autofocus', $_GET ) || ( array_key_exists( 'autofocus', $_GET ) && array_key_exists( 'panel', $_GET['autofocus'] ) && 'gf_stla_panel' !== $_GET['autofocus']['panel'] ) ) {
+
+		if ( ! isset( $_GET['autofocus'] ) || ( is_array( $_GET['autofocus'] ) && array_key_exists( 'panel', $_GET['autofocus'] ) && 'gf_stla_panel' !== $_GET['autofocus']['panel'] ) ) {
 			$wp_customize->add_setting(
 				'gf_stla_hidden_field_for_form_id',
 				array(

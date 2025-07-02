@@ -95,9 +95,16 @@ class Stla_Antispam_Kyeword_Precheck {
 		// keyword validation message.
 		$validation_message = ! empty( $saved_antispam_settings['restriction']['blockedKeywordsMessage'] ) ? $saved_antispam_settings['restriction']['blockedKeywordsMessage'] : 'This field contains a blocked keyword.';
 
+		// exclude these fields from checking.
+		$radio_types    = Stla_Antispam_Common_Helpers::get_radio_types();
+		$checkbox_types = Stla_Antispam_Common_Helpers::get_checkbox_types();
+		$email_types    = Stla_Antispam_Common_Helpers::get_email_types();
+
+		$exclude_fields = array_merge( $radio_types, $checkbox_types, $email_types );
+
 		foreach ( $form['fields'] as $index => $field ) {
 			// Skip admin-only fields or unsupported input types.
-			if ( $field->is_administrative() ) {
+			if ( $field->is_administrative() || in_array( $field->type, $exclude_fields, true ) ) {
 				continue;
 			}
 
