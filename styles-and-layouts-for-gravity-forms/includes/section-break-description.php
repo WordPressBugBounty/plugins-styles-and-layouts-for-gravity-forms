@@ -3,6 +3,10 @@
  * Section break description controls for customizer.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 // Font align style buttons.
 $wp_customize->add_setting(
 	'gf_stla_form_id_' . $current_form_id . '[section-break-description][text-align]',
@@ -57,7 +61,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_' . $current_form_id . '[section-break-description][font-size-label-only]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'    => __( 'Description Font Size' ),
+			'label'    => __( 'Description Font Size' , 'styles-and-layouts-for-gravity-forms'),
 			'section'  => 'gf_stla_form_id_section_break_title_description',
 			'settings' => array(),
 		)
@@ -148,7 +152,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[section-break-description][line-height-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Description Line Height' ),
+				'label'    => __( 'Description Line Height' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_section_break_title_description',
 				'settings' => array(),
 			)
@@ -248,7 +252,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[section-break-description][font-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Description Font Color' ),
+				'label'   => __( 'Description Font Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_section_break_title_description',
 			)
 		)
@@ -268,7 +272,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[section-break-description][background-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Description Background Color' ),
+				'label'   => __( 'Description Background Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_section_break_title_description',
 			)
 		)
@@ -281,7 +285,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[section-break-description][padding-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Section Padding' ),
+				'label'    => __( 'Section Padding' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_section_break_title_description',
 				'settings' => array(),
 			)

@@ -125,7 +125,7 @@ class Stla_Antispam_Keyword_Mark_spam {
 				if ( method_exists( 'GFCommon', 'set_spam_filter' ) ) {
 						$spam_filter_message = sprintf(
 							/* translators: %s: The blocked keyword */
-							__( 'Blocked because the submission contained the blocked keyword: %s', 'text-domain' ),
+							__( 'Blocked because the submission contained the blocked keyword: %s', 'styles-and-layouts-for-gravity-forms' ),
 							esc_html( $raw_keywords )
 						);
 						GFCommon::set_spam_filter( $form_id, 'Gravity Booster Anti-spam', $spam_filter_message );

@@ -227,7 +227,7 @@ class Gf_Stla_Review {
 				'time_installed' => array(
 					'triggers' => array(
 						'one_week'     => array(
-							'message'    => sprintf( $time_message, $current_user->user_login, __( '1 week', 'gf_stla' ) ),
+							'message'    => sprintf( $time_message, $current_user->user_login, __( '1 week', 'styles-and-layouts-for-gravity-forms' ) ),
 							'conditions' => array(
 								strtotime( self::installed_on() . ' +1 week' ) < time(),
 							),
@@ -235,7 +235,7 @@ class Gf_Stla_Review {
 							'pri'        => 10,
 						),
 						'one_month'    => array(
-							'message'    => sprintf( $time_message, $current_user->user_login, __( '1 month', 'gf_stla' ) ),
+							'message'    => sprintf( $time_message, $current_user->user_login, __( '1 month', 'styles-and-layouts-for-gravity-forms' ) ),
 							'conditions' => array(
 								strtotime( self::installed_on() . ' +1 month' ) < time(),
 							),
@@ -243,7 +243,7 @@ class Gf_Stla_Review {
 							'pri'        => 20,
 						),
 						'three_months' => array(
-							'message'    => sprintf( $time_message, $current_user->user_login, __( '3 months', 'gf_stla' ) ),
+							'message'    => sprintf( $time_message, $current_user->user_login, __( '3 months', 'styles-and-layouts-for-gravity-forms' ) ),
 							'conditions' => array(
 								strtotime( self::installed_on() . ' +3 months' ) < time(),
 							),
@@ -403,17 +403,17 @@ class Gf_Stla_Review {
 			<ul>
 				<li>
 					<a class="gf_stla-dismiss" target="_blank" href="<?php echo esc_url( $trigger['link'] ); ?>" data-reason="am_now">
-						<strong><?php esc_html_e( 'Ok, you deserve it', 'gf_stla' ); ?></strong>
+						<strong><?php esc_html_e( 'Ok, you deserve it', 'styles-and-layouts-for-gravity-forms' ); ?></strong>
 					</a>
 				</li>
 				<li>
 					<a href="#" class="gf_stla-dismiss" data-reason="maybe_later">
-						<?php esc_html_e( 'Nope, maybe later', 'gf_stla' ); ?>
+						<?php esc_html_e( 'Nope, maybe later', 'styles-and-layouts-for-gravity-forms' ); ?>
 					</a>
 				</li>
 				<li>
 					<a href="#" class="gf_stla-dismiss" data-reason="already_did">
-						<?php esc_html_e( 'I already did', 'gf_stla' ); ?>
+						<?php esc_html_e( 'I already did', 'styles-and-layouts-for-gravity-forms' ); ?>
 					</a>
 				</li>
 			</ul>

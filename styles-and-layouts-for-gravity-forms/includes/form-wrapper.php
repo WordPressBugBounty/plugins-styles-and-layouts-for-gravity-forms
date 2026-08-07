@@ -3,6 +3,10 @@
  * Form wrapper controls in customizer.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $wp_customize->add_section(
 	'gf_stla_form_id_form_wrapper',
 	array(
@@ -17,7 +21,7 @@ $wp_customize->add_section(
 			$wp_customize, // WP_Customize_Manager
 			'gf_stla_form_id_' . $current_form_id . '[form-wrapper][max-width-label-only]', // Setting id
 			array( // Args, including any custom ones.
-				'label'    => __( 'Width' ),
+				'label'    => __( 'Width' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_form_wrapper',
 				'settings' => array(),
 			)
@@ -118,7 +122,7 @@ $wp_customize->add_section(
 			'type'     => 'select',
 			'priority' => 10, // Within the section.
 			'section'  => 'gf_stla_form_id_form_wrapper', // Required, core or custom.
-			'label'    => __( 'Font Family' ),
+			'label'    => __( 'Font Family' , 'styles-and-layouts-for-gravity-forms'),
 			'choices'  => $font_collection,
 		)
 	);
@@ -139,7 +143,7 @@ $wp_customize->add_section(
 			'type'     => 'radio',
 			'priority' => 10, // Within the section.
 			'section'  => 'gf_stla_form_id_form_wrapper', // Required, core or custom.
-			'label'    => __( 'Background Type' ),
+			'label'    => __( 'Background Type' , 'styles-and-layouts-for-gravity-forms'),
 			'choices'  => array(
 				'color'    => 'Color',
 				'image'    => 'Image',
@@ -162,7 +166,7 @@ $wp_customize->add_section(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[form-wrapper][background-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Background Color' ),
+				'label'   => __( 'Background Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_form_wrapper',
 				'title'   => 'Select Color',
 			)
@@ -208,7 +212,7 @@ $wp_customize->add_section(
 			'type'     => 'select',
 			'priority' => 10, // Within the section.
 			'section'  => 'gf_stla_form_id_form_wrapper', // Required, core or custom.
-			'label'    => __( 'Gradient Direction' ),
+			'label'    => __( 'Gradient Direction' , 'styles-and-layouts-for-gravity-forms'),
 			'choices'  => array(
 				'left'     => 'Left to Right',
 				'top'      => 'Top to Bottom',
@@ -231,7 +235,7 @@ $wp_customize->add_section(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[form-wrapper][gradient-color-1]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Gradient Color 1' ),
+				'label'   => __( 'Gradient Color 1' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_form_wrapper',
 
 			)
@@ -252,7 +256,7 @@ $wp_customize->add_section(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[form-wrapper][gradient-color-2]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Gradient Color 2' ),
+				'label'   => __( 'Gradient Color 2' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_form_wrapper',
 
 			)
@@ -276,7 +280,7 @@ $wp_customize->add_section(
 			'type'        => 'range',
 			'priority'    => 10, // Within the section.
 			'section'     => 'gf_stla_form_id_form_wrapper', // Required, core or custom.
-			'label'       => __( 'Opacity' ),
+			'label'       => __( 'Opacity' , 'styles-and-layouts-for-gravity-forms'),
 			'input_attrs' => array(
 				'min'  => 0,
 				'max'  => 1,
@@ -303,7 +307,7 @@ $wp_customize->add_section(
 				'type'        => 'rangeslider',
 				'priority'    => 10, // Within the section.
 				'section'     => 'gf_stla_form_id_form_wrapper', // Required, core or custom.
-				'label'       => __( 'Opacity' ),
+				'label'       => __( 'Opacity' , 'styles-and-layouts-for-gravity-forms'),
 				'input_attrs' => array(
 					'min'  => 0,
 					'max'  => 1,
@@ -320,7 +324,7 @@ $wp_customize->add_section(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[form-wrapper][border-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Border' ),
+				'label'    => __( 'Border' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_form_wrapper',
 				'settings' => array(),
 			)
@@ -343,7 +347,7 @@ $wp_customize->add_section(
 			'type'        => 'text',
 			'priority'    => 10, // Within the section.
 			'section'     => 'gf_stla_form_id_form_wrapper', // Required, core or custom.
-			'label'       => __( 'Size' ),
+			'label'       => __( 'Size' , 'styles-and-layouts-for-gravity-forms'),
 			'input_attrs' => array(
 				'placeholder' => 'Example: 4px or 10%',
 			),
@@ -366,7 +370,7 @@ $wp_customize->add_section(
 			'type'     => 'select',
 			'priority' => 10, // Within the section.
 			'section'  => 'gf_stla_form_id_form_wrapper', // Required, core or custom.
-			'label'    => __( 'Type' ),
+			'label'    => __( 'Type' , 'styles-and-layouts-for-gravity-forms'),
 			'choices'  => $border_types,
 		)
 	);
@@ -386,7 +390,7 @@ $wp_customize->add_section(
 			'type'        => 'text',
 			'priority'    => 10, // Within the section.
 			'section'     => 'gf_stla_form_id_form_wrapper', // Required, core or custom.
-			'label'       => __( 'Radius' ),
+			'label'       => __( 'Radius' , 'styles-and-layouts-for-gravity-forms'),
 			'input_attrs' => array(
 				'placeholder' => 'Example: 4px or 10%',
 			),
@@ -409,7 +413,7 @@ $wp_customize->add_section(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[form-wrapper][border-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Border Color' ),
+				'label'   => __( 'Border Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_form_wrapper',
 			)
 		)
@@ -422,7 +426,7 @@ $wp_customize->add_section(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[form-wrapper][margin-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Margin' ),
+				'label'    => __( 'Margin' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_form_wrapper',
 				'settings' => array(),
 			)
@@ -438,7 +442,7 @@ $wp_customize->add_section(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[form-wrapper][padding-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Padding' ),
+				'label'    => __( 'Padding' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_form_wrapper',
 				'settings' => array(),
 			)

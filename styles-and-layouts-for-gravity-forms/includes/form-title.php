@@ -1,4 +1,8 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 /* Start of Section */
 $wp_customize->add_section(
 	'gf_stla_form_id_form_title_description',
@@ -22,7 +26,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[form-title][font-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Title Font Color' ),
+				'label'   => __( 'Title Font Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_form_title_description',
 			)
 		)
@@ -57,7 +61,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[form-title][font-size-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Title Font Size' ),
+				'label'    => __( 'Title Font Size' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_form_title_description',
 				'settings' => array(),
 			)
@@ -149,7 +153,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[form-title][line-height-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Title Line Height' ),
+				'label'    => __( 'Title Line Height' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_form_title_description',
 				'settings' => array(),
 			)
@@ -266,7 +270,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[form-title][margin-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Title Margin' ),
+				'label'    => __( 'Title Margin' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_form_title_description',
 				'settings' => array(),
 			)
@@ -288,7 +292,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[form-title][padding-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Title Padding' ),
+				'label'    => __( 'Title Padding' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_form_title_description',
 				'settings' => array(),
 			)

@@ -3,6 +3,10 @@
  * Form Description controls for customizer.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /* Start of Section */
 $wp_customize->add_setting(
 	'gf_stla_form_id_' . $current_form_id . '[form-description][font-color]',
@@ -18,7 +22,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[form-description][font-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Description Font Color' ),
+				'label'   => __( 'Description Font Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_form_title_description',
 			)
 		)
@@ -54,7 +58,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[form-description][font-size-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Description Font Size' ),
+				'label'    => __( 'Description Font Size' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_form_title_description',
 				'settings' => array(),
 			)
@@ -146,7 +150,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[form-description][line-height-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Description Line Height' ),
+				'label'    => __( 'Description Line Height' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_form_title_description',
 				'settings' => array(),
 			)
@@ -261,7 +265,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[form-description][margin-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Description Margin' ),
+				'label'    => __( 'Description Margin' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_form_title_description',
 				'settings' => array(),
 			)
@@ -277,7 +281,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[form-description][padding-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Description Padding' ),
+				'label'    => __( 'Description Padding' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_form_title_description',
 				'settings' => array(),
 			)

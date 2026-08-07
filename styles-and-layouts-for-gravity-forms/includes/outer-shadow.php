@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $wp_customize->add_section(
 	'gf_stla_form_id_form_outer_shadow',
 	array(
@@ -23,7 +27,7 @@ $wp_customize->add_setting(
 			'type'        => 'text',
 			'priority'    => 10, // Within the section.
 			'section'     => 'gf_stla_form_id_form_outer_shadow', // Required, core or custom.
-			'label'       => __( 'Horizontal Offset' ),
+			'label'       => __( 'Horizontal Offset' , 'styles-and-layouts-for-gravity-forms'),
 			'input_attrs' => array(
 				'placeholder' => 'Example: 4px or 10%',
 			),
@@ -45,7 +49,7 @@ $wp_customize->add_setting(
 			'type'        => 'text',
 			'priority'    => 10, // Within the section.
 			'section'     => 'gf_stla_form_id_form_outer_shadow', // Required, core or custom.
-			'label'       => __( 'Vertical Offset' ),
+			'label'       => __( 'Vertical Offset' , 'styles-and-layouts-for-gravity-forms'),
 			'input_attrs' => array(
 				'placeholder' => 'Example: 4px or 10%',
 			),
@@ -67,7 +71,7 @@ $wp_customize->add_setting(
 			'type'        => 'text',
 			'priority'    => 10, // Within the section.
 			'section'     => 'gf_stla_form_id_form_outer_shadow', // Required, core or custom.
-			'label'       => __( 'Blur Radius' ),
+			'label'       => __( 'Blur Radius' , 'styles-and-layouts-for-gravity-forms'),
 			'input_attrs' => array(
 				'placeholder' => 'Example: 4px or 10%',
 			),
@@ -89,7 +93,7 @@ $wp_customize->add_setting(
 			'type'        => 'text',
 			'priority'    => 10, // Within the section.
 			'section'     => 'gf_stla_form_id_form_outer_shadow', // Required, core or custom.
-			'label'       => __( 'Spread Radius' ),
+			'label'       => __( 'Spread Radius' , 'styles-and-layouts-for-gravity-forms'),
 			'input_attrs' => array(
 				'placeholder' => 'Example: 4px or 10%',
 			),
@@ -110,7 +114,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager
 			'gf_stla_form_id_' . $current_form_id . '[box-shadow][outer-color]', // Setting id
 			array( // Args, including any custom ones.
-				'label'   => __( 'Shadow Color' ),
+				'label'   => __( 'Shadow Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_form_outer_shadow',
 			)
 		)

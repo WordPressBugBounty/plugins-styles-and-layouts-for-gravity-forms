@@ -1,4 +1,8 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 /**
  * Render the License Page in WP dashboard.
  */
@@ -68,7 +72,34 @@ class Stla_License_Page {
 		do_action( 'stla-license-fields', $this );
 
 		// Register settings.
-		register_setting( 'stla_licenses', 'stla_licenses' );
+		register_setting(
+			'stla_licenses',
+			'stla_licenses',
+			array( 'sanitize_callback' => array( $this, 'sanitize_licenses' ) )
+		);
+	}
+
+	/**
+	 * Sanitize the saved license keys.
+	 *
+	 * Keys are field names defined in code by add-ons, so they are preserved as
+	 * given; only the submitted values are cleaned.
+	 *
+	 * @param mixed $value The submitted option value.
+	 * @return mixed The sanitized option value.
+	 */
+	public function sanitize_licenses( $value ) {
+
+		if ( ! is_array( $value ) ) {
+			return is_string( $value ) ? sanitize_text_field( $value ) : '';
+		}
+
+		$sanitized = array();
+		foreach ( $value as $key => $license ) {
+			$sanitized[ $key ] = is_string( $license ) ? sanitize_text_field( $license ) : $license;
+		}
+
+		return $sanitized;
 	}
 
 	/**

@@ -1,4 +1,8 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
  
 function stla_margin_padding_controls( $wp_customize, $current_form_id, $section, $setting_type, $setting_name){
 	
@@ -13,7 +17,7 @@ function stla_margin_padding_controls( $wp_customize, $current_form_id, $section
 	  'type' => 'text',
 	  'priority' => 10, // Within the section.
 	  'section' => $section, // Required, core or custom.
-	  'label' => __( 'Top' )
+	  'label' => __( 'Top' , 'styles-and-layouts-for-gravity-forms')
 	)
 	);
 
@@ -27,7 +31,7 @@ function stla_margin_padding_controls( $wp_customize, $current_form_id, $section
 	  'type' => 'text',
 	  'priority' => 10, // Within the section.
 	  'section' => $section, // Required, core or custom.
-	  'label' => __( 'Bottom' )
+	  'label' => __( 'Bottom' , 'styles-and-layouts-for-gravity-forms')
 	)
 	);
 
@@ -41,7 +45,7 @@ function stla_margin_padding_controls( $wp_customize, $current_form_id, $section
 	  'type' => 'text',
 	  'priority' => 10, // Within the section.
 	  'section' => $section, // Required, core or custom.
-	  'label' => __( 'Left' )
+	  'label' => __( 'Left' , 'styles-and-layouts-for-gravity-forms')
 	)
 	);
 
@@ -55,7 +59,7 @@ function stla_margin_padding_controls( $wp_customize, $current_form_id, $section
 	  'type' => 'text',
 	  'priority' => 10, // Within the section.
 	  'section' => $section, // Required, core or custom.
-	  'label' => __( 'Right' )
+	  'label' => __( 'Right' , 'styles-and-layouts-for-gravity-forms')
 	)
 	);
 	

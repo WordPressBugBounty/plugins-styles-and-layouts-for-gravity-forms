@@ -3,6 +3,10 @@
  * General settings for customizer.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $wp_customize->add_section(
 	'gf_stla_form_id_general_settings',
 	array(
@@ -26,7 +30,7 @@ $wp_customize->add_control(
 		'type'     => 'checkbox',
 		'priority' => 10, // Within the section.
 		'section'  => 'gf_stla_form_id_general_settings', // Required, core or custom.
-		'label'    => __( 'Enable this option if your theme is overwriting "Styles & layout plugin\'s styling"' ),
+		'label'    => __( 'Enable this option if your theme is overwriting "Styles & layout plugin\'s styling"' , 'styles-and-layouts-for-gravity-forms'),
 	)
 );
 
@@ -70,7 +74,7 @@ $wp_customize->add_control(
 		'type'        => 'textarea',
 		'priority'    => 10, // Within the section.
 		'section'     => 'gf_stla_form_id_general_settings', // Required, core or custom.
-		'label'       => __( 'Custom CSS' ),
+		'label'       => __( 'Custom CSS' , 'styles-and-layouts-for-gravity-forms'),
 		'input_attrs' => array(
 			'placeholder' => 'Enter your custom css code here',
 		),
@@ -93,7 +97,7 @@ $wp_customize->add_control(
 		'type'     => 'select',
 		'priority' => 10, // Within the section.
 		'section'  => 'gf_stla_form_id_general_settings', // Required, core or custom.
-		'label'    => __( 'Delete Form Styles' ),
+		'label'    => __( 'Delete Form Styles' , 'styles-and-layouts-for-gravity-forms'),
 		'choices'  => $select_form,
 
 	)

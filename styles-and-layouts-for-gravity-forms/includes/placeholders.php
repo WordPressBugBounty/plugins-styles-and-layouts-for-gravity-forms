@@ -3,6 +3,10 @@
  * Placeholder controls for customizer.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 // Form placeholders section uses refresh method.
 
 /* Start of Section */
@@ -43,7 +47,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_' . $current_form_id . '[placeholders][font-size-label-only]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'    => __( 'Font Size' ),
+			'label'    => __( 'Font Size' , 'styles-and-layouts-for-gravity-forms'),
 			'section'  => 'gf_stla_form_id_placeholders',
 			'settings' => array(),
 		)
@@ -142,7 +146,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_' . $current_form_id . '[placeholders][font-color]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'   => __( 'Font Color' ),
+			'label'   => __( 'Font Color' , 'styles-and-layouts-for-gravity-forms'),
 			'section' => 'gf_stla_form_id_placeholders',
 		)
 	)

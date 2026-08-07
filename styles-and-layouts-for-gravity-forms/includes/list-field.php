@@ -3,6 +3,10 @@
  * list field controls for customizer.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $wp_customize->add_section(
 	'gf_stla_form_id_list_field',
 	array(
@@ -25,7 +29,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[list-field-table][background-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Table background Color' ),
+				'label'   => __( 'Table background Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_list_field',
 			)
 		)
@@ -61,7 +65,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[list-field-heading][font-size-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Heading Font Size' ),
+				'label'    => __( 'Heading Font Size' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_list_field',
 				'settings' => array(),
 			)
@@ -151,7 +155,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[list-field-heading][line-height-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Heading Line Height' ),
+				'label'    => __( 'Heading Line Height' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_list_field',
 				'settings' => array(),
 			)
@@ -252,7 +256,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[list-field-heading][font-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Heading Font Color' ),
+				'label'   => __( 'Heading Font Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_list_field',
 			)
 		)
@@ -272,7 +276,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[list-field-heading][background-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Heading background Color' ),
+				'label'   => __( 'Heading background Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_list_field',
 			)
 		)
@@ -309,7 +313,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[list-field-heading][padding-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Heading Padding' ),
+				'label'    => __( 'Heading Padding' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_list_field',
 				'settings' => array(),
 			)
@@ -347,7 +351,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[list-field-cell][font-size-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Cell Font Size' ),
+				'label'    => __( 'Cell Font Size' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_list_field',
 				'settings' => array(),
 			)
@@ -438,7 +442,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[list-field-cell][line-height-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Cell Line Height' ),
+				'label'    => __( 'Cell Line Height' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_list_field',
 				'settings' => array(),
 			)
@@ -536,7 +540,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[list-field-cell][background-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Cell background Color' ),
+				'label'   => __( 'Cell background Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_list_field',
 			)
 		)
@@ -556,7 +560,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[list-field-cell][font-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Cell Font Color' ),
+				'label'   => __( 'Cell Font Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_list_field',
 			)
 		)
@@ -594,7 +598,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[list-field-cell-container][padding-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Cell Padding' ),
+				'label'    => __( 'Cell Padding' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_list_field',
 				'settings' => array(),
 			)

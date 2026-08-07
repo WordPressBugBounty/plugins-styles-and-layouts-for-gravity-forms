@@ -3,6 +3,10 @@
  * Radio Controls for customizer.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $wp_customize->add_section(
 	'gf_stla_form_id_radio_inputs',
 	array(
@@ -17,7 +21,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_' . $current_form_id . '[radio-inputs][max-width-label-only]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'    => __( 'Width' ),
+			'label'    => __( 'Width' , 'styles-and-layouts-for-gravity-forms'),
 			'section'  => 'gf_stla_form_id_radio_inputs',
 			'settings' => array(),
 		)
@@ -131,7 +135,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[radio-inputs][font-size-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Font Size' ),
+				'label'    => __( 'Font Size' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_radio_inputs',
 				'settings' => array(),
 			)
@@ -221,7 +225,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[radio-inputs][line-height-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Line Height' ),
+				'label'    => __( 'Line Height' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_radio_inputs',
 				'settings' => array(),
 			)
@@ -320,7 +324,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[radio-inputs][font-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Font Color' ),
+				'label'   => __( 'Font Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_radio_inputs',
 			)
 		)
@@ -333,7 +337,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[radio-inputs][padding-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Padding' ),
+				'label'    => __( 'Padding' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_radio_inputs',
 				'settings' => array(),
 			)

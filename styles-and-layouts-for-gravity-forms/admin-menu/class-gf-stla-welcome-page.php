@@ -1,4 +1,8 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 /**
  * Render the welcome page.
  */
@@ -33,7 +37,7 @@ class Gf_Stla_Welcome_Page {
 
 		<div class="stla-wel-page-wrap" >
 			<div class="stla-wel-header-info">
-				<img class="stla-intro-image" src="<?php echo esc_url( GF_STLA_URL ) . '/css/images/style&layoutlogo.png'; ?>" />
+				<img class="stla-intro-image" src="<?php echo esc_url( GF_STLA_URL . '/css/images/style-layout-logo.png' ); ?>" />
 				<div class="stla-wel-heading-text stla-wel-padding-container">
 					<h2 class="stla-welcome-heading">Welcome to Styles & Layouts for Gravity Forms</h2>
 					<p >Thank you for choosing Styles & Layout for Gravity Forms - the most used, cost free plugin that let you style Gravity forms without any problem.</p>

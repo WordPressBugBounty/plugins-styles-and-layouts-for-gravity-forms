@@ -2,6 +2,10 @@
 /**
  * Addons controls.
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 $wp_customize->add_section(
 	'gf_stla_form_id_addons',
 	array(
@@ -24,7 +28,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_[addons][addon-bundle]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'   => __( 'Addon Bundle' ),
+			'label'   => __( 'Addon Bundle' , 'styles-and-layouts-for-gravity-forms'),
 			'section' => 'gf_stla_form_id_addons',
 		)
 	)
@@ -45,7 +49,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_[addons][material-design]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'   => __( 'Material Design' ),
+			'label'   => __( 'Material Design' , 'styles-and-layouts-for-gravity-forms'),
 			'section' => 'gf_stla_form_id_addons',
 		)
 	)
@@ -67,7 +71,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_[addons][theme-pack]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'   => __( 'Theme Pack' ),
+			'label'   => __( 'Theme Pack' , 'styles-and-layouts-for-gravity-forms'),
 			'section' => 'gf_stla_form_id_addons',
 		)
 	)
@@ -89,7 +93,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_[addons][field-icons]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'   => __( 'Field Icons' ),
+			'label'   => __( 'Field Icons' , 'styles-and-layouts-for-gravity-forms'),
 			'section' => 'gf_stla_form_id_addons',
 		)
 	)
@@ -109,7 +113,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_[addons][tooltips]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'   => __( 'Tooltips' ),
+			'label'   => __( 'Tooltips' , 'styles-and-layouts-for-gravity-forms'),
 			'section' => 'gf_stla_form_id_addons',
 		)
 	)
@@ -141,7 +145,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_[addons][custom-themes]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'   => __( 'Custom Themes' ),
+			'label'   => __( 'Custom Themes' , 'styles-and-layouts-for-gravity-forms'),
 			'section' => 'gf_stla_form_id_addons',
 		)
 	)
@@ -172,7 +176,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_[addons][more]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'   => __( 'More Addons ' ),
+			'label'   => __( 'More Addons ' , 'styles-and-layouts-for-gravity-forms'),
 			'section' => 'gf_stla_form_id_addons',
 		)
 	)
@@ -192,7 +196,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_[addons][customization-support]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'   => __( 'Customization & Support' ),
+			'label'   => __( 'Customization & Support' , 'styles-and-layouts-for-gravity-forms'),
 			'section' => 'gf_stla_form_id_addons',
 		)
 	)

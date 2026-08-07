@@ -3,6 +3,10 @@
  * Textarea controls for customizer.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /* Start of Section */
 $wp_customize->add_section(
 	'gf_stla_form_id_paragraph_textarea',
@@ -18,7 +22,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_' . $current_form_id . '[paragraph-textarea][max-width-label-only]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'    => __( 'Width' ),
+			'label'    => __( 'Width' , 'styles-and-layouts-for-gravity-forms'),
 			'section'  => 'gf_stla_form_id_paragraph_textarea',
 			'settings' => array(),
 		)
@@ -106,7 +110,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[paragraph-textarea][margin-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Margin' ),
+				'label'    => __( 'Margin' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_paragraph_textarea',
 				'settings' => array(),
 			)
@@ -121,7 +125,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[paragraph-textarea][padding-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Padding' ),
+				'label'    => __( 'Padding' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_paragraph_textarea',
 				'settings' => array(),
 			)

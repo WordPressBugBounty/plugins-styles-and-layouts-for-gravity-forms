@@ -3,6 +3,10 @@
  * Checkbox controls in customizer.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /* Start of Section */
 $wp_customize->add_section(
 	'gf_stla_form_id_checkbox_inputs',
@@ -18,7 +22,7 @@ $wp_customize->add_section(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[checkbox-inputs][max-width-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Width' ),
+				'label'    => __( 'Width' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_checkbox_inputs',
 				'settings' => array(),
 			)
@@ -131,7 +135,7 @@ $wp_customize->add_section(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[checkbox-inputs][font-size-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Font Size' ),
+				'label'    => __( 'Font Size' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_checkbox_inputs',
 				'settings' => array(),
 			)
@@ -222,7 +226,7 @@ $wp_customize->add_section(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[checkbox-inputs][line-height-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Line Height' ),
+				'label'    => __( 'Line Height' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_checkbox_inputs',
 				'settings' => array(),
 			)
@@ -321,7 +325,7 @@ $wp_customize->add_section(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[checkbox-inputs][font-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Font Color' ),
+				'label'   => __( 'Font Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_checkbox_inputs',
 			)
 		)
@@ -333,7 +337,7 @@ $wp_customize->add_section(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[checkbox-inputs][padding-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Padding' ),
+				'label'    => __( 'Padding' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_checkbox_inputs',
 				'settings' => array(),
 			)

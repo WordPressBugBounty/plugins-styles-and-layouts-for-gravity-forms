@@ -2,6 +2,10 @@
 /**
  * Dropdown controls for customizer.
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 /* Start of Section */
 $wp_customize->add_section(
 	'gf_stla_form_id_dropdown_fields',
@@ -16,7 +20,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_' . $current_form_id . '[dropdown-fields][max-width-label-only]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'    => __( 'Width' ),
+			'label'    => __( 'Width' , 'styles-and-layouts-for-gravity-forms'),
 			'section'  => 'gf_stla_form_id_dropdown_fields',
 			'settings' => array(),
 		)
@@ -106,7 +110,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[dropdown-fields][height-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Height' ),
+				'label'    => __( 'Height' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_dropdown_fields',
 				'settings' => array(),
 			)
@@ -219,7 +223,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[dropdown-fields][font-size-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Font Size' ),
+				'label'    => __( 'Font Size' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_dropdown_fields',
 				'settings' => array(),
 			)
@@ -319,7 +323,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[dropdown-fields][font-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Font Color' ),
+				'label'   => __( 'Font Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_dropdown_fields',
 			)
 		)
@@ -331,7 +335,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[dropdown-fields][border-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Border' ),
+				'label'    => __( 'Border' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_dropdown_fields',
 				'settings' => array(),
 			)
@@ -354,7 +358,7 @@ $wp_customize->add_setting(
 			'type'        => 'text',
 			'priority'    => 10, // Within the section.
 			'section'     => 'gf_stla_form_id_dropdown_fields', // Required, core or custom.
-			'label'       => __( 'Size' ),
+			'label'       => __( 'Size' , 'styles-and-layouts-for-gravity-forms'),
 			'input_attrs' => array(
 				'placeholder' => 'Example: 4px or 10%',
 			),
@@ -377,7 +381,7 @@ $wp_customize->add_setting(
 			'type'     => 'select',
 			'priority' => 10, // Within the section.
 			'section'  => 'gf_stla_form_id_dropdown_fields', // Required, core or custom.
-			'label'    => __( 'Type' ),
+			'label'    => __( 'Type' , 'styles-and-layouts-for-gravity-forms'),
 			'choices'  => $border_types,
 		)
 	);
@@ -398,7 +402,7 @@ $wp_customize->add_setting(
 			'type'        => 'text',
 			'priority'    => 10, // Within the section.
 			'section'     => 'gf_stla_form_id_dropdown_fields', // Required, core or custom.
-			'label'       => __( 'Radius' ),
+			'label'       => __( 'Radius' , 'styles-and-layouts-for-gravity-forms'),
 			'input_attrs' => array(
 				'placeholder' => 'Example: 4px or 10%',
 			),
@@ -420,7 +424,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[dropdown-fields][border-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Border Color' ),
+				'label'   => __( 'Border Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_dropdown_fields',
 			)
 		)
@@ -442,7 +446,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[dropdown-fields][background-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Background Color' ),
+				'label'   => __( 'Background Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_dropdown_fields',
 			)
 		)
@@ -455,7 +459,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[dropdown-fields][margin-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Margin' ),
+				'label'    => __( 'Margin' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_dropdown_fields',
 				'settings' => array(),
 			)
@@ -470,7 +474,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[dropdown-fields][padding-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Padding' ),
+				'label'    => __( 'Padding' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_dropdown_fields',
 				'settings' => array(),
 			)

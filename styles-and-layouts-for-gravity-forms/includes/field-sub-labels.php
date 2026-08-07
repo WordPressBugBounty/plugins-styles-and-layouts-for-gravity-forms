@@ -3,6 +3,10 @@
  * Sub labels controls for customizer.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /* Start of Section */
 $wp_customize->add_section(
 	'gf_stla_form_id_field_sub_labels',
@@ -27,7 +31,7 @@ $wp_customize->add_control(
 		'type'     => 'checkbox',
 		'priority' => 10, // Within the section.
 		'section'  => 'gf_stla_form_id_field_sub_labels', // Required, core or custom.
-		'label'    => __( 'Hide Sub Labels' ),
+		'label'    => __( 'Hide Sub Labels' , 'styles-and-layouts-for-gravity-forms'),
 	)
 );
 
@@ -60,7 +64,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_' . $current_form_id . '[field-sub-labels][font-size-label-only]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'    => __( 'Font Size' ),
+			'label'    => __( 'Font Size' , 'styles-and-layouts-for-gravity-forms'),
 			'section'  => 'gf_stla_form_id_field_sub_labels',
 			'settings' => array(),
 		)
@@ -151,7 +155,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[field-sub-labels][line-height-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Line Height' ),
+				'label'    => __( 'Line Height' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_field_sub_labels',
 				'settings' => array(),
 			)
@@ -250,7 +254,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[field-sub-labels][font-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Font Color' ),
+				'label'   => __( 'Font Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_field_sub_labels',
 			)
 		)
@@ -262,7 +266,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[field-sub-labels][padding-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Padding' ),
+				'label'    => __( 'Padding' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_field_sub_labels',
 				'settings' => array(),
 			)

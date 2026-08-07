@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Manages the singleton instance for handling anti-spam functionality in the Styles & Layouts for Gravity Forms admin.
  *
@@ -101,7 +105,12 @@ class Stla_Admin_Fetch_Anispam {
 			wp_send_json_error( 'Invalid nonce' );
 		}
 
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( 'Insufficient permissions' );
+		}
+
 		$form_id           = isset( $_POST['formId'] ) ? sanitize_text_field( wp_unslash( $_POST['formId'] ) ) : '';
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Raw JSON, sanitized per leaf after json_decode() below.
 		$antispam_settings = isset( $_POST['antiSpamSettings'] ) ? wp_unslash( $_POST['antiSpamSettings'] ) : '';
 
 		if ( empty( $antispam_settings ) || empty( $form_id ) ) {
@@ -113,6 +122,8 @@ class Stla_Admin_Fetch_Anispam {
 		if ( json_last_error() !== JSON_ERROR_NONE ) {
 			wp_send_json_error( 'Error decoding the anti-spam settings JSON' );
 		}
+
+		$antispam_settings = Stla_Admin_Fetch_Content_Area::sanitize_settings_recursive( $antispam_settings );
 
 		$has_uploaded = update_option( 'gf_stla_antispam_settings_' . $form_id, $antispam_settings );
 

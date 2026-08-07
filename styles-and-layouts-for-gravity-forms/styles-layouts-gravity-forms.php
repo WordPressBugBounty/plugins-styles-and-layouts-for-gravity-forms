@@ -1,12 +1,15 @@
 <?php
 /**
- * Plugin Name: Gravity Booster ( Style & Layouts )
+ * Plugin Name: Gravity Booster - Styles & Layouts for Gravity Forms
  * Plugin URI:  http://wpmonks.com/styles-layouts-gravity-forms
  * Description: Create beautiful styles for your gravity forms
- * Version:     5.26
+ * Version:     6.0
  * Author:      Sushil Kumar
  * Author URI:  http://wpmonks.com/
- * License:     GPL2License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Requires PHP: 7.4
+ * Text Domain: styles-and-layouts-for-gravity-forms
+ * License:     GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 // Don't load directly.
@@ -17,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'GF_STLA_DIR', WP_PLUGIN_DIR . '/' . basename( __DIR__ ) );
 define( 'GF_STLA_URL', plugins_url() . '/' . basename( __DIR__ ) );
 define( 'GF_STLA_STORE_URL', 'https://wpmonks.com' );
-define( 'GF_STLA_VERSION', '5.26' );
+define( 'GF_STLA_VERSION', '6.0' );
 
 if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) ) {
 	include_once GF_STLA_DIR . '/admin-menu/EDD_SL_Plugin_Updater.php';
@@ -158,7 +161,7 @@ class Gravity_customizer_admin {
 
 		$gravity_theme_dependencies = array();
 		if ( isset( $_GET['formId'] ) ) {
-			$gravity_theme_dependencies = $this->get_gravity_theme_dependencies( $_GET['formId'] );
+			$gravity_theme_dependencies = $this->get_gravity_theme_dependencies( sanitize_text_field( wp_unslash( $_GET['formId'] ) ) );
 		}
 
 		$gravity_theme_dependencies[] = 'wp-components';
@@ -614,7 +617,7 @@ class Gravity_customizer_admin {
 		$wp_customize->add_panel(
 			'gf_stla_panel',
 			array(
-				'title'       => __( 'Styles & Layouts Gravity Forms' ),
+				'title'       => __( 'Styles & Layouts Gravity Forms' , 'styles-and-layouts-for-gravity-forms'),
 				'description' => '<p> Craft your Forms</p>', // Include html tags such as <p>.
 				'priority'    => 160, // Mixed with top-level-section hierarchy.
 			)
@@ -800,7 +803,7 @@ class Gravity_customizer_admin {
 			$input_styles .= $this->is_css_not_set( $settings[ $category ], 'border-radius' ) ? '' : '-moz-border-radius:' . $settings[ $category ]['border-radius'] . $this->gf_stla_add_px_to_value( $settings[ $category ]['border-radius'] ) . $important . ';';
 		}
 
-		$input_styles .= $this->is_css_not_set( $settings[ $category ], 'custom-css' ) ? '' : $settings[ $category ]['custom-css'] . ';';
+		$input_styles .= $this->is_css_not_set( $settings[ $category ], 'custom-css' ) ? '' : stla_sanitize_custom_css( $settings[ $category ]['custom-css'] ) . ';';
 
 		$input_styles .= $this->is_css_not_set( $settings[ $category ], 'padding-left' ) ? '' : 'padding-left:' . $settings[ $category ]['padding-left'] . $this->gf_stla_add_px_to_value( $settings[ $category ]['padding-left'] ) . $important . ';';
 		$input_styles .= $this->is_css_not_set( $settings[ $category ], 'padding-right' ) ? '' : 'padding-right:' . $settings[ $category ]['padding-right'] . $this->gf_stla_add_px_to_value( $settings[ $category ]['padding-right'] ) . $important . ';';
@@ -1111,8 +1114,13 @@ class Gravity_customizer_admin {
 	public function admin_notices() {
 		if ( ! class_exists( 'GFForms' ) ) {
 			$class   = 'notice notice-error';
-			$message = '<a href="http:// www.gravityforms.com/"> Gravity Forms</a> is not installed. <strong> Styles & Layouts for Gravity Forms </strong> can\'t work without Gravity Forms ';
-			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message );
+			$message = sprintf(
+				/* translators: 1: opening anchor tag linking to gravityforms.com, 2: closing anchor tag. */
+				__( '%1$sGravity Forms%2$s is not installed. Gravity Booster cannot work without Gravity Forms.', 'styles-and-layouts-for-gravity-forms' ),
+				'<a href="https://www.gravityforms.com/">',
+				'</a>'
+			);
+			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), wp_kses_post( $message ) );
 		}
 	}
 

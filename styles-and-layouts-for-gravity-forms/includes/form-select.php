@@ -3,6 +3,10 @@
  * Form select components.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $wp_customize->add_section(
 	'gf_stla_select_form_section',
 	array(
@@ -39,7 +43,7 @@ $wp_customize->add_section(
 			'type'     => 'select',
 			'priority' => 10, // Within the section.
 			'section'  => 'gf_stla_select_form_section', // Required, core or custom.
-			'label'    => __( 'Select Form' ),
+			'label'    => __( 'Select Form' , 'styles-and-layouts-for-gravity-forms'),
 			'choices'  => $select_form,
 
 		)

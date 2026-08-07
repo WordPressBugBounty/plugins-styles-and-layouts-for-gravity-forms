@@ -1,4 +1,8 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 /**
  * Responsible for all the ajax calls from admin builder.
  */
@@ -90,7 +94,7 @@ class Stla_Admin_Fetch_Content_Area {
 
 		$confirmation = GFFormDisplay::get_confirmation_message( reset( $form['confirmations'] ), $form, array(), array() );
 
-		echo $confirmation;
+		echo wp_kses_post( $confirmation );
 
 		// Make sure to exit after outputting the HTML.
 		wp_die();
@@ -263,6 +267,10 @@ class Stla_Admin_Fetch_Content_Area {
 			wp_send_json_error( 'Invalid nonce' );
 		}
 
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( 'Insufficient permissions' );
+		}
+
 		$form_id = isset( $_POST['formId'] ) ? sanitize_text_field( wp_unslash( $_POST['formId'] ) ) : 0;
 
 		delete_option( 'gf_stla_form_id_' . $form_id );
@@ -271,6 +279,39 @@ class Stla_Admin_Fetch_Content_Area {
 		$styled_forms = $this->get_forms_with_styles();
 
 		wp_send_json_success( $styled_forms );
+	}
+
+	/**
+	 * Recursively sanitizes decoded JSON settings, stripping tags/scripts from every scalar leaf.
+	 *
+	 * The 'custom-css' key is a special case: it holds legitimate raw CSS (selectors, combinators,
+	 * @media queries, etc.) that sanitize_text_field() would corrupt, so it is passed to
+	 * stla_sanitize_custom_css() instead, which neutralises the one sequence able to break out of a
+	 * <style> element while leaving CSS syntax intact. A non-string 'custom-css' value is not a real
+	 * CSS field, so it falls through to normal recursion rather than being stored as-is.
+	 *
+	 * @param mixed $data The decoded settings data (array or scalar).
+	 * @return mixed The sanitized data.
+	 */
+	public static function sanitize_settings_recursive( $data ) {
+
+		if ( is_array( $data ) ) {
+			$sanitized = array();
+			foreach ( $data as $key => $value ) {
+				if ( 'custom-css' === $key && is_string( $value ) ) {
+					$sanitized[ $key ] = stla_sanitize_custom_css( $value );
+				} else {
+					$sanitized[ $key ] = self::sanitize_settings_recursive( $value );
+				}
+			}
+			return $sanitized;
+		}
+
+		if ( is_string( $data ) ) {
+			return sanitize_text_field( $data );
+		}
+
+		return $data;
 	}
 
 	/**
@@ -286,15 +327,32 @@ class Stla_Admin_Fetch_Content_Area {
 			wp_send_json_error( 'Invalid nonce' );
 		}
 
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( 'Insufficient permissions' );
+		}
+
 		$form_id         = isset( $_POST['formId'] ) ? sanitize_text_field( wp_unslash( $_POST['formId'] ) ) : 0;
-		$styler_settings = isset( $_POST['stylerSettings'] ) ? sanitize_text_field( wp_unslash( $_POST['stylerSettings'] ) ) : 0;
+		/*
+		 * These three values are JSON documents, so they are deliberately not passed through
+		 * sanitize_text_field() here. Doing so is what CVE-2026-12477 exploited: the encoded
+		 * form of a payload ("<") contains no HTML for the sanitizer to strip, and
+		 * json_decode() then turned it back into a live "<". Each decoded leaf is sanitized
+		 * instead, immediately below, by sanitize_settings_recursive().
+		 */
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Raw JSON, sanitized per leaf after json_decode() on the next lines.
+		$styler_settings = isset( $_POST['stylerSettings'] ) ? wp_unslash( $_POST['stylerSettings'] ) : '';
 		$styler_settings = json_decode( $styler_settings, true );
+		$styler_settings = self::sanitize_settings_recursive( $styler_settings );
 
-		$general_settings = isset( $_POST['generalSettings'] ) ? sanitize_textarea_field( wp_unslash( $_POST['generalSettings'] ) ) : 0;
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Raw JSON, sanitized per leaf after json_decode() on the next lines.
+		$general_settings = isset( $_POST['generalSettings'] ) ? wp_unslash( $_POST['generalSettings'] ) : '';
 		$general_settings = json_decode( $general_settings, true );
+		$general_settings = self::sanitize_settings_recursive( $general_settings );
 
-		$styler_fields_settings = isset( $_POST['stylerFieldsSettings'] ) ? sanitize_text_field( wp_unslash( $_POST['stylerFieldsSettings'] ) ) : 0;
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Raw JSON, sanitized per leaf after json_decode() on the next lines.
+		$styler_fields_settings = isset( $_POST['stylerFieldsSettings'] ) ? wp_unslash( $_POST['stylerFieldsSettings'] ) : '';
 		$styler_fields_settings = json_decode( $styler_fields_settings, true );
+		$styler_fields_settings = self::sanitize_settings_recursive( $styler_fields_settings );
 
 		update_option( 'gf_stla_form_id_' . $form_id, $styler_settings );
 		update_option( 'gf_stla_general_settings' . $form_id, $general_settings );
@@ -333,14 +391,20 @@ class Stla_Admin_Fetch_Content_Area {
 		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'stla_gravity_booster_nonce' ) ) {
 			wp_send_json_error( 'Invalid nonce' );
 		}
+
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( 'Insufficient permissions' );
+		}
+
 		// Validate booster settings.
-		$booster_settings = isset( $_POST['boosterSettings'] ) ? sanitize_text_field( wp_unslash( $_POST['boosterSettings'] ) ) : '';
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Raw JSON, sanitized per leaf after json_decode() below.
+		$booster_settings = isset( $_POST['boosterSettings'] ) ? wp_unslash( $_POST['boosterSettings'] ) : '';
 		if ( empty( $booster_settings ) ) {
 			wp_send_json_error( 'Booster Settings are empty' );
 		}
 		// Save booster settings.
-		$booster_settings = stripslashes( $booster_settings );
 		$booster_settings = json_decode( $booster_settings, true );
+		$booster_settings = self::sanitize_settings_recursive( $booster_settings );
 		update_option( 'gf_stla_booster_settings', $booster_settings );
 		// Get booster settings.
 		$settings = $this->stla_get_booster_settings();

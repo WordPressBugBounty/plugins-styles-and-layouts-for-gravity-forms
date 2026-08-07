@@ -1,4 +1,8 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 $get_form_options = get_option( 'gf_stla_form_id_' . $css_form_id );
 
 $get_general_settings = get_option( 'gf_stla_general_settings' . $css_form_id );
@@ -43,7 +47,7 @@ if ( isset( $get_form_options['form-wrapper'] ) ) {
 			update_option( 'gf_stla_form_id_' . $css_form_id, $get_form_options );
 		}
 
-		echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'form-wrapper', $important ) );
+		echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'form-wrapper', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css().
 
 		// Show Gradient background.
 		if ( isset( $get_form_options['form-wrapper']['background-type'] ) && ( 'gradient' === $get_form_options['form-wrapper']['background-type'] ) ) {
@@ -73,7 +77,7 @@ if ( isset( $get_form_options['form-wrapper'] ) ) {
 		}
 
 		if ( $get_form_options['form-wrapper']['background-type'] == 'image' ) {
-			echo empty( $get_form_options['form-wrapper']['background-image'] ) ? '' : 'background-image:url("' . $get_form_options['form-wrapper']['background-image'] . '") ;';
+			echo empty( $get_form_options['form-wrapper']['background-image'] ) ? '' : 'background-image:url("' . esc_url( $get_form_options['form-wrapper']['background-image'] ) . '") ;';
 			echo 'background-repeat: no-repeat;';
 		}
 
@@ -91,7 +95,7 @@ if ( isset( $get_form_options['form-wrapper'] ) ) {
 <?php if ( isset( $get_form_options['form-header'] ) ) { ?>
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_heading {
 		<?php echo 'border-style: solid;'; ?>
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'form-header', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'form-header', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 		<?php
 		if ( empty( $get_form_options['form-header']['border-size'] ) ) {
 			echo 'border-width: 0px;';
@@ -102,13 +106,13 @@ if ( isset( $get_form_options['form-wrapper'] ) ) {
 
 <?php if ( isset( $get_form_options['form-title'] ) ) { ?>
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_heading .gform_title {
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'form-title', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'form-title', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 	}
 <?php } ?>
 
 <?php if ( isset( $get_form_options['form-description'] ) ) { ?>
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_heading .gform_description {
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'form-description', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'form-description', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 		display:block;
 	}
 <?php } ?>
@@ -122,7 +126,7 @@ if ( isset( $get_form_options['form-wrapper'] ) ) {
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gfield#field_submit .gform-button
 	{
 		<?php echo 'border-style: solid;'; ?>
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'submit-button', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'submit-button', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 
 		<?php
 		if ( empty( $get_form_options['submit-button']['border-size'] ) ) {
@@ -143,9 +147,9 @@ if ( isset( $get_form_options['form-wrapper'] ) ) {
 	}
 
 
-	body #gform_wrapper_<?php echo $css_form_id; ?> .gform_footer button.mdc-button:hover {
-		<?php echo isset( $get_form_options['submit-button']['hover-color'] ) ? 'background-color:' . $get_form_options['submit-button']['hover-color'] . ';' : ''; ?>
-		<?php echo isset( $get_form_options['submit-button']['font-hover-color'] ) ? 'color:' . $get_form_options['submit-button']['font-hover-color'] . ';' : ''; ?>
+	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_footer button.mdc-button:hover {
+		<?php echo isset( $get_form_options['submit-button']['hover-color'] ) ? 'background-color:' . esc_html( $get_form_options['submit-button']['hover-color'] ) . ';' : ''; ?>
+		<?php echo isset( $get_form_options['submit-button']['font-hover-color'] ) ? 'color:' . esc_html( $get_form_options['submit-button']['font-hover-color'] ) . ';' : ''; ?>
 	}
 	<?php if ( ! empty( $get_form_options['submit-button']['button-align'] ) ) { ?>
 		
@@ -171,7 +175,7 @@ if ( isset( $get_form_options['text-fields'] ) ) {
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield input[type=password],
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield input[type=number]
 	{
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'text-fields', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'text-fields', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 
 		max-width:100%;
 		<?php
@@ -239,7 +243,7 @@ if ( isset( $get_form_options['text-fields'] ) ) {
 
 	<?php
 	if ( isset( $get_form_options['paragraph-textarea'] ) ) {
-		echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'paragraph-textarea', $important ) );
+		echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'paragraph-textarea', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css().
 	}
 	?>
 	}
@@ -247,7 +251,7 @@ if ( isset( $get_form_options['text-fields'] ) ) {
 
 <?php if ( isset( $get_form_options['dropdown-fields'] ) ) { ?>
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield select {
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'dropdown-fields', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'dropdown-fields', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 		max-width: 100%;
 		<?php
 		if ( ! isset( $get_form_options['dropdown-fields']['border-size'] ) ) {
@@ -259,7 +263,7 @@ if ( isset( $get_form_options['text-fields'] ) ) {
 
 <?php if ( isset( $get_form_options['radio-inputs'] ) ) { ?>
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gfield_radio .gchoice label {
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'radio-inputs', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'radio-inputs', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 		<?php echo ! empty( $get_form_options['radio-inputs']['max-width'] ) ? 'width: 100%;' : ''; ?>
 	}
 	<?php if ( ! empty( $get_form_options['radio-inputs']['max-width'] ) ) { ?>
@@ -272,7 +276,7 @@ if ( isset( $get_form_options['text-fields'] ) ) {
 <?php if ( isset( $get_form_options['checkbox-inputs'] ) ) { ?>
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gfield_checkbox .gchoice label,
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gfield .ginput_container_consent label{
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'checkbox-inputs', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'checkbox-inputs', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 		<?php echo ! empty( $get_form_options['checkbox-inputs']['max-width'] ) ? 'width: 100%;' : ''; ?>
 	}
 	<?php if ( ! empty( $get_form_options['checkbox-inputs']['max-width'] ) ) { ?>
@@ -294,7 +298,7 @@ if ( isset( $get_form_options['text-fields'] ) ) {
 <?php if ( isset( $get_form_options['field-labels'] ) ) { ?>
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield .gfield_label {
 		<?php
-		echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'field-labels', $important ) );
+		echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'field-labels', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css().
 		if ( isset( $get_form_options['field-labels']['text-align'] ) ) {
 			echo 'justify-content:' . esc_html( $get_form_options['field-labels']['text-align'] ) . ';';
 		}
@@ -318,19 +322,19 @@ if ( isset( $get_form_options['text-fields'] ) ) {
 
 <?php if ( isset( $get_form_options['field-descriptions'] ) ) { ?>
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield .gfield_description {
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'field-descriptions', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'field-descriptions', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 	}
 <?php } ?>
 
 <?php if ( isset( $get_form_options['section-break-title'] ) ) { ?>
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gsection .gsection_title {
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'section-break-title', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'section-break-title', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 	}
 <?php } ?>
 
 <?php if ( isset( $get_form_options['section-break-description'] ) ) { ?>
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gsection .gsection_description {
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'section-break-description', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'section-break-description', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 		padding: 0 16px 0 0 !important;
 	}
 <?php } ?>
@@ -364,7 +368,7 @@ if ( isset( $get_form_options['text-fields'] ) ) {
 
 <?php if ( isset( $get_form_options['confirmation-message'] ) ) { ?>
 	body #gform_confirmation_message_<?php echo esc_html( $css_form_id ); ?>  {
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'confirmation-message', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'confirmation-message', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 		<?php
 		if ( ! isset( $get_form_options['confirmation-message']['border-size'] ) ) {
 			echo 'border-width: 1px;';
@@ -376,7 +380,7 @@ if ( isset( $get_form_options['text-fields'] ) ) {
 <?php if ( isset( $get_form_options['error-message'] ) ) { ?>
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .validation_error,
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_validation_errors {
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'error-message', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'error-message', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 		<?php
 		if ( ! isset( $get_form_options['error-message']['border-size'] ) ) {
 			echo 'border-width: 1px;';
@@ -415,49 +419,49 @@ if ( isset( $get_form_options['text-fields'] ) ) {
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield .gfield_date_month label,
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield .gfield_date_day label,
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield .gfield_date_year label {
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'field-sub-labels', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'field-sub-labels', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 	}
 
 <?php } ?>
 
 <?php if ( isset( $get_form_options['list-field-table'] ) ) { ?>
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield .ginput_list {
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'list-field-table', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'list-field-table', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 	}
 <?php } ?>
 
 <?php if ( isset( $get_form_options['list-field-heading'] ) ) { ?>
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield .ginput_list .gfield_list .gfield_header_item:not(:last-child),
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield .ginput_list .gfield_list thead th:not(:last-child){
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'list-field-heading', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'list-field-heading', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 	}
 <?php } ?>
 
 <?php if ( isset( $get_form_options['list-field-cell'] ) ) { ?>
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield .ginput_list .gfield_list .gfield_list_cell input {
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'list-field-cell', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'list-field-cell', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 	}
 <?php } ?>
 
 <?php if ( isset( $get_form_options['list-field-cell-container'] ) ) { ?>
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield .ginput_list gfield_list .gfield_list_cell  {
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'list-field-cell-container', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'list-field-cell-container', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 	}
 <?php } ?>
 
 <?php if ( isset( $get_form_options['placeholders'] ) ) { ?>
 /* Option to style placeholder */
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'placeholders', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'placeholders', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 	}
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> ::-moz-placeholder { /* Firefox 19+ */
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'placeholders', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'placeholders', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 	}
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> :-ms-input-placeholder { /* IE 10+ */
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'placeholders', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'placeholders', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 	}
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> :-moz-placeholder { /* Firefox 18- */
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'placeholders', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'placeholders', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 	}
 <?php } ?>
 
@@ -511,10 +515,10 @@ if ( isset( $get_form_options['text-fields'] ) ) {
 
 	<?php if ( ! empty( $get_form_options['text-fields']['max-width-tab'] ) ) { ?>
 		
-			body #gform_wrapper_<?php echo $css_form_id; ?> div.ginput_complex.ginput_container.ginput_container_name,
-			body #gform_wrapper_<?php echo $css_form_id; ?> div.ginput_complex.ginput_container,
-			body #gform_wrapper_<?php echo $css_form_id; ?> .gfield .ginput_container.ginput_container_list {
-				width: <?php echo $get_form_options['text-fields']['max-width-tab'] . $main_class_object->gf_stla_add_px_to_value( $get_form_options['text-fields']['max-width-tab'] ); ?>;
+			body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> div.ginput_complex.ginput_container.ginput_container_name,
+			body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> div.ginput_complex.ginput_container,
+			body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gfield .ginput_container.ginput_container_list {
+				width: <?php echo esc_html( $get_form_options['text-fields']['max-width-tab'] . $main_class_object->gf_stla_add_px_to_value( $get_form_options['text-fields']['max-width-tab'] ) ); ?>;
 				max-width:100%;
 			}
 
@@ -643,13 +647,13 @@ if ( isset( $get_form_options['text-fields'] ) ) {
 
 	<?php if ( isset( $get_form_options['list-field-heading'] ) ) { ?>
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield .ginput_list .gfield_list .gfield_list_cell::after{
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'list-field-heading', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'list-field-heading', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 	}
 	<?php } ?>
 
 	<?php if ( isset( $get_form_options['list-field-table'] ) ) { ?>
 	body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield .ginput_list .gfield_list_groups .gfield_list_group{
-		<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'list-field-table', $important ) ); ?>
+		<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'list-field-table', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 	}
 	<?php } ?>
 
@@ -858,12 +862,12 @@ if ( isset( $get_form_options['text-fields'] ) ) {
 
 	<?php if ( isset( $get_form_options['list-field-heading'] ) ) { ?>
 			body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield .ginput_list .gfield_list .gfield_list_cell::after {
-				<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'list-field-heading', $important ) ); ?>
+				<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'list-field-heading', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 			}
 
 			<?php if ( isset( $get_form_options['list-field-table'] ) ) { ?>
 					body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield .ginput_list .gfield_list_group {
-						<?php echo esc_html( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'list-field-table', $important ) ); ?>
+						<?php echo stla_esc_css( $main_class_object->gf_sb_get_saved_styles( $css_form_id, 'list-field-table', $important ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css(). ?>
 					}
 			<?php } ?>
 
@@ -902,7 +906,8 @@ if ( isset( $get_form_options['text-fields'] ) ) {
 /*Option to add custom CSS */
 <?php
 if ( stla_isset_checker( $get_form_options, 'general-settings', array( 'custom-css' ) ) ) {
-	echo $get_form_options['general-settings']['custom-css'];
+	// Sanitized again on output so values stored by older versions can never reach the page.
+	echo stla_sanitize_custom_css( $get_form_options['general-settings']['custom-css'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS for a <style> element; esc_html() would corrupt it. See stla_esc_css().
 }
 ?>
 
@@ -914,4 +919,12 @@ ob_end_clean();
 
 // replacing empty spacing and line-breaks.
 $styles = preg_replace( '/\v(?:[\v\h]+)|(?:\t+)/', '', $styles );
-echo $styles;
+
+/*
+ * Printed as-is. The buffer is the whole <style> element, so it must not be run
+ * through stla_esc_css() -- that neutralises "</style" and would rewrite this
+ * element's own end tag, leaving the element open so the rest of the page (the
+ * form included) is swallowed as CSS text. Every value interpolated above is
+ * already passed through stla_esc_css()/stla_sanitize_custom_css() on its own.
+ */
+echo $styles; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Values inside are individually sanitized; see note above.

@@ -3,6 +3,10 @@
  * Preview template under customizer.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /* Template Name: Stla Preview Template */
 $form_id = isset( $_GET['stla_form_id'] ) ? sanitize_text_field( wp_unslash( $_GET['stla_form_id'] ) ) : '';
 

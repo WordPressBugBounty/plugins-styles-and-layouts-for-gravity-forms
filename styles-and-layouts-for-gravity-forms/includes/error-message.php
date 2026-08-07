@@ -3,6 +3,10 @@
  * Controls and settings for error messages.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 // Start of section.
 $wp_customize->add_section(
 	'gf_stla_form_id_error_message',
@@ -18,7 +22,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_' . $current_form_id . '[error-message][max-width-label-only]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'    => __( 'Width' ),
+			'label'    => __( 'Width' , 'styles-and-layouts-for-gravity-forms'),
 			'section'  => 'gf_stla_form_id_error_message',
 			'settings' => array(),
 		)
@@ -157,7 +161,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_' . $current_form_id . '[error-message][font-size-label-only]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'    => __( 'Font Size' ),
+			'label'    => __( 'Font Size' , 'styles-and-layouts-for-gravity-forms'),
 			'section'  => 'gf_stla_form_id_error_message',
 			'settings' => array(),
 		)
@@ -251,7 +255,7 @@ $wp_customize->add_control(
 				$wp_customize, // WP_Customize_Manager.
 				'gf_stla_form_id_' . $current_form_id . '[error-message][line-height-label-only]', // Setting id.
 				array( // Args, including any custom ones.
-					'label'    => __( 'Line Height' ),
+					'label'    => __( 'Line Height' , 'styles-and-layouts-for-gravity-forms'),
 					'section'  => 'gf_stla_form_id_error_message',
 					'settings' => array(),
 				)
@@ -350,7 +354,7 @@ $wp_customize->add_control(
 				$wp_customize, // WP_Customize_Manager.
 				'gf_stla_form_id_' . $current_form_id . '[error-message][font-color]', // Setting id.
 				array( // Args, including any custom ones.
-					'label'   => __( 'Font Color' ),
+					'label'   => __( 'Font Color' , 'styles-and-layouts-for-gravity-forms'),
 					'section' => 'gf_stla_form_id_error_message',
 				)
 			)
@@ -365,7 +369,7 @@ $wp_customize->add_control(
 				$wp_customize, // WP_Customize_Manager.
 				'gf_stla_form_id_' . $current_form_id . '[error-message][border-label-only]', // Setting id.
 				array( // Args, including any custom ones.
-					'label'    => __( 'Error Message Border' ),
+					'label'    => __( 'Error Message Border' , 'styles-and-layouts-for-gravity-forms'),
 					'section'  => 'gf_stla_form_id_error_message',
 					'settings' => array(),
 				)
@@ -387,7 +391,7 @@ $wp_customize->add_control(
 				'type'        => 'text',
 				'priority'    => 10, // Within the section.
 				'section'     => 'gf_stla_form_id_error_message', // Required, core or custom.
-				'label'       => __( 'Size' ),
+				'label'       => __( 'Size' , 'styles-and-layouts-for-gravity-forms'),
 				'input_attrs' => array(
 					'placeholder' => 'Example: 4px or 10%',
 				),
@@ -410,7 +414,7 @@ $wp_customize->add_control(
 				'type'     => 'select',
 				'priority' => 10, // Within the section.
 				'section'  => 'gf_stla_form_id_error_message', // Required, core or custom.
-				'label'    => __( 'Type' ),
+				'label'    => __( 'Type' , 'styles-and-layouts-for-gravity-forms'),
 				'choices'  => $border_types,
 			)
 		);
@@ -431,7 +435,7 @@ $wp_customize->add_control(
 				'type'        => 'text',
 				'priority'    => 10, // Within the section.
 				'section'     => 'gf_stla_form_id_error_message', // Required, core or custom.
-				'label'       => __( 'Radius' ),
+				'label'       => __( 'Radius' , 'styles-and-layouts-for-gravity-forms'),
 				'input_attrs' => array(
 					'placeholder' => 'Example: 4px or 10%',
 				),
@@ -453,7 +457,7 @@ $wp_customize->add_control(
 				$wp_customize, // WP_Customize_Manager.
 				'gf_stla_form_id_' . $current_form_id . '[error-message][border-color]', // Setting id.
 				array( // Args, including any custom ones.
-					'label'   => __( 'Border Color' ),
+					'label'   => __( 'Border Color' , 'styles-and-layouts-for-gravity-forms'),
 					'section' => 'gf_stla_form_id_error_message',
 				)
 			)
@@ -474,7 +478,7 @@ $wp_customize->add_control(
 				$wp_customize, // WP_Customize_Manager.
 				'gf_stla_form_id_' . $current_form_id . '[error-message][background-color]', // Setting id.
 				array( // Args, including any custom ones.
-					'label'   => __( 'Background Color' ),
+					'label'   => __( 'Background Color' , 'styles-and-layouts-for-gravity-forms'),
 					'section' => 'gf_stla_form_id_error_message',
 				)
 			)
@@ -487,7 +491,7 @@ $wp_customize->add_control(
 				$wp_customize, // WP_Customize_Manager.
 				'gf_stla_form_id_' . $current_form_id . '[error-message][padding-label-only]', // Setting id.
 				array( // Args, including any custom ones.
-					'label'    => __( 'Error message Padding' ),
+					'label'    => __( 'Error message Padding' , 'styles-and-layouts-for-gravity-forms'),
 					'section'  => 'gf_stla_form_id_error_message',
 					'settings' => array(),
 				)

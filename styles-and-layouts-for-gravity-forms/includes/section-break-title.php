@@ -3,6 +3,10 @@
  * Section break tile controls for customizer.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $wp_customize->add_section(
 	'gf_stla_form_id_section_break_title_description',
 	array(
@@ -66,7 +70,7 @@ $wp_customize->add_control(
 		$wp_customize, // WP_Customize_Manager.
 		'gf_stla_form_id_' . $current_form_id . '[section-break-title][font-size-label-only]', // Setting id.
 		array( // Args, including any custom ones.
-			'label'    => __( 'Title Font Size' ),
+			'label'    => __( 'Title Font Size' , 'styles-and-layouts-for-gravity-forms'),
 			'section'  => 'gf_stla_form_id_section_break_title_description',
 			'settings' => array(),
 		)
@@ -157,7 +161,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[section-break-title][line-height-label-only]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'    => __( 'Title Line Height' ),
+				'label'    => __( 'Title Line Height' , 'styles-and-layouts-for-gravity-forms'),
 				'section'  => 'gf_stla_form_id_section_break_title_description',
 				'settings' => array(),
 			)
@@ -257,7 +261,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[section-break-title][font-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Title Font Color' ),
+				'label'   => __( 'Title Font Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_section_break_title_description',
 			)
 		)
@@ -277,7 +281,7 @@ $wp_customize->add_setting(
 			$wp_customize, // WP_Customize_Manager.
 			'gf_stla_form_id_' . $current_form_id . '[section-break-title][background-color]', // Setting id.
 			array( // Args, including any custom ones.
-				'label'   => __( 'Title Background Color' ),
+				'label'   => __( 'Title Background Color' , 'styles-and-layouts-for-gravity-forms'),
 				'section' => 'gf_stla_form_id_section_break_title_description',
 			)
 		)

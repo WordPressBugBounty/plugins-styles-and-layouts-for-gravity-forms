@@ -2,13 +2,14 @@
 Contributors: wpmonks
 Donate link: https://www.paypal.me/wpmonks
 Tags: Gravity Forms CSS, gravity forms styler, Gravity Forms Design, Gravity Forms Tooltips
-Requires at least: 4.0
-Tested up to: 6.8
-Stable tag: 5.26
+Requires at least: 5.9
+Tested up to: 7.0
+Requires PHP: 7.4
+Stable tag: 6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Gravity Booster - Styles and Layouts for Gravity Forms plugin lets you design and style Gravity Forms without CSS coding. You can also use it for adding material, checkbox & radio styler, bootstrap, theme pack 
+Design and style Gravity Forms without writing CSS. Includes material, checkbox and radio stylers, bootstrap support and theme packs.
 
 == Description ==
 
@@ -141,6 +142,11 @@ Yes, Gravity Forms embedded in Divi themes is also supported. Please check the t
 4. Options in settings
 
 == Changelog ==
+
+= 6.0 (7th August 2026) =
+* Security fix: hardened output escaping and input sanitization for styler, booster, and anti-spam settings
+* Fixed custom CSS being corrupted when saved. Media query range syntax such as "@media (width <= 600px)" was silently truncated.
+* Fixed custom CSS being escaped into HTML entities when printed, which broke child combinators (>), quotes, and "&" in url() query strings.
 
 
 = 5.26 (25th September 2025) =
