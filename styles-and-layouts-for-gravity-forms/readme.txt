@@ -5,7 +5,7 @@ Tags: Gravity Forms CSS, gravity forms styler, Gravity Forms Design, Gravity For
 Requires at least: 5.9
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 6.0
+Stable tag: 6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -142,6 +142,10 @@ Yes, Gravity Forms embedded in Divi themes is also supported. Please check the t
 4. Options in settings
 
 == Changelog ==
+
+= 6.1 (18th August 2026) =
+* Fixed fatal error caused by a missing $ sigil on css_form_id in class-fields-styles.php.
+
 
 = 6.0 (7th August 2026) =
 * Security fix: hardened output escaping and input sanitization for styler, booster, and anti-spam settings

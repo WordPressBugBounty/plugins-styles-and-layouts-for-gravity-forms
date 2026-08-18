@@ -3,7 +3,7 @@
  * Plugin Name: Gravity Booster - Styles & Layouts for Gravity Forms
  * Plugin URI:  http://wpmonks.com/styles-layouts-gravity-forms
  * Description: Create beautiful styles for your gravity forms
- * Version:     6.0
+ * Version:     6.1
  * Author:      Sushil Kumar
  * Author URI:  http://wpmonks.com/
  * Requires PHP: 7.4
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'GF_STLA_DIR', WP_PLUGIN_DIR . '/' . basename( __DIR__ ) );
 define( 'GF_STLA_URL', plugins_url() . '/' . basename( __DIR__ ) );
 define( 'GF_STLA_STORE_URL', 'https://wpmonks.com' );
-define( 'GF_STLA_VERSION', '6.0' );
+define( 'GF_STLA_VERSION', '6.1' );
 
 if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) ) {
 	include_once GF_STLA_DIR . '/admin-menu/EDD_SL_Plugin_Updater.php';

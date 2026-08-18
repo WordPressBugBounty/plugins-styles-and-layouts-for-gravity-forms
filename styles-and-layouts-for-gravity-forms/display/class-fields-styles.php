@@ -283,7 +283,7 @@ foreach ( $get_fields_options as $field_id => $get_field_option ) {
 		body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield#field_<?php echo esc_html( $css_form_id ); ?>_<?php echo esc_html( $field_id ); ?> div.ginput_complex.ginput_container.ginput_container_name select,
 		body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield#field_<?php echo esc_html( $css_form_id ); ?>_<?php echo esc_html( $field_id ); ?> div.ginput_complex.ginput_container input[type="text"],
 		body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield#field_<?php echo esc_html( $css_form_id ); ?>_<?php echo esc_html( $field_id ); ?> div.ginput_complex.ginput_container input select,
-		body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield#field_<?php echo esc_html( css_form_id ); ?>_<?php echo esc_html( $field_id ); ?> .ginput_container.ginput_container_list input[type=text] {
+		body #gform_wrapper_<?php echo esc_html( $css_form_id ); ?> .gform_body .gform_fields .gfield#field_<?php echo esc_html( $css_form_id ); ?>_<?php echo esc_html( $field_id ); ?> .ginput_container.ginput_container_list input[type=text] {
 			max-width:100%;
 			width:100%;
 		}
